@@ -16,31 +16,29 @@ const playerOne = document.querySelectorAll('.player-one-piece')
 const playerTwo = document.querySelectorAll('.player-two-piece')
 
 // Create a Function that 
-function play_Board()
+function display_board()
 {
   for(let i = 0; i < 6; i++)
   {
     for(let j = 0; j < 7; j++)
     {
-      // created a variable called rows that stores the the id attribute called rows from CSS file.
-      let rows = document.getElementById(`slot-${i}-${j}`);
-      // store each row and column inside a 
-      // variable named fill
+      
+      let cells = document.getElementById(`cell-${i}-${j}`);
       let fill = board[i][j];
 
       // If the vairable fill is a 0 then
       // remove the function called clicked
       // else add the function called clicked
-      if(fill == '')
+      if(fill == ' ')
       {
-        rows.classList.remove('clicked');
+        cells.classList.remove('clicked');
       }
       else
       {
-        rows.classList.add('clicked');
+       cells.classList.add('clicked');
       }
       // each row and column is returned
-      rows.innerHTML = fill;
+        cells.innerHTML = fill;
     }
   }
 }
@@ -49,15 +47,17 @@ function play_Board()
 
 function players_turn(x, y)
 {
-  let rows = board[x][y];
-  if(rows != '')
+  console.log('I am in players turn function');
+  let cells = board[x][y];
+  if(cells != ' ')
   {
 
   }
   else
   {
-    board[x][y] = playerOne;
-    play_Board();
+
+    board[x][y] = 'R';
+    display_board();
     const result = check_Board(board);
     if(result == 'continue')
     {
@@ -75,15 +75,15 @@ function players_turn(x, y)
           ties++;
           break;
       }
-      record();
+      stats();
     }
   }
 
 }
 
-function record()
+function stats()
 {
-  document.getElementById('record').innerHTML = `wins: ${wins}, losses: ${losses}, ties: ${ties}`;
+  document.getElementById('stats').innerHTML = `wins: ${wins}, losses: ${losses}, ties: ${ties}`;
 }
 
 function reset()
@@ -97,7 +97,7 @@ function reset()
     [' ', ' ', ' ', ' ', ' ', ' ', ' '],
     [' ', ' ', ' ', ' ', ' ', ' ', ' ']
   ];
-  play_Board();
+  display_board();
 }
 
 function ai_turn()
@@ -108,35 +108,34 @@ function ai_turn()
     {
       if(board[i][j] == ' ')
       {
-        board[x][y] =  playerTwo;
-        play_Board();
+
+        board[i][j] = 'Y';
+        display_board();
+
         const result = check_Board(board);
         if(result == 'continue')
         {
           ai_turn();
         }
-        else
-        {
-        alert(result);
-        switch(result)
-        {
-          case 'win':
-          wins++;
+        else{
+          alert(result);
+          switch(result){
+        case 'loss':
+          losses++;
           break;
-          case 'tie':
+        case 'tie':
           ties++;
           break;
-        }
-        record();
+          }
+  
+        stats();
         return;
       }
     }
   }
 }
 
-play_Board();
-record();
 
-
-
-
+display_board();
+stats();
+}

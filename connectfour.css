@@ -5,14 +5,14 @@ h1{
     text-decoration: underline;
     font-family: 'IBM Plex Sans Condensed' ;
   }
-.board{
+  
+.grid{
     display: grid; 
     width: auto;
     height: auto;
-    margin-right: 280px;
-    margin-left: 280px;
+    margin: 0 auto;
     justify-content: center;
-    background-color: rgb(89, 145, 218);   
+    background-color: rgb(0, 110, 255);   
     grid-template-columns: repeat(7,auto);
     grid-template-rows: repeat(6,auto);
     /*https://css-tricks.com/snippets/css/complete-guide-grid/*/
@@ -23,7 +23,7 @@ h1{
     margin: 1.5px;
     padding-bottom: 50%;
     border: 2px solid gold;
-    background-color: rgb(229, 231, 236);
+    background-color: rgb(30, 72, 189);
     border-radius: 50% ;
 }
 
@@ -39,7 +39,6 @@ h1{
 
 .player-one-piece
 {
-    
     background-color: red;
 }
 
