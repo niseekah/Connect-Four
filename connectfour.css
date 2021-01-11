@@ -1,30 +1,37 @@
-.slot{
-    width: 100px;
-    height: 100px;
-    border: 4px solid rgb(48, 42, 75);
+h1{
     text-align: center;
-    border-radius: 50%;
-    display: inline-block; 
+    font-size: 50%;
+    color: gold;
+    text-decoration: underline;
+    font-family: 'IBM Plex Sans Condensed' ;
+  }
+.grid{
+    display: grid; 
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    justify-content: center;
+    background-color: rgb(0, 110, 255);   
+    grid-template-columns: repeat(7,auto);
+    grid-template-rows: repeat(6,auto);
+    /*https://css-tricks.com/snippets/css/complete-guide-grid/*/
 }
-.board
-{
-  position: absolute;
-  top: 4rem;
-  left: 50%;
-  transform: translate(-50%);
-  width: 650px;
-  height: 600px;
-  background-color: rgb(18, 127, 230);
-  border: 1px solid rgb(48, 42, 75);
-  box-shadow: 5px 5px rgb(114, 98, 98);
+.slot{
+    width: 7vw;
+    height: 7vw;
+    margin: 1.5px;
+    padding-bottom: 50%;
+    border: 2px solid gold;
+    background-color: rgb(30, 72, 189);
+    border-radius: 50% ;
 }
 
 .slot:not(.clicked):hover{
     cursor: pointer;
-    background-color: rgba(61, 82, 213, 0.5);
+    background-color: gold;
 }
 
 .slot.clicked:hover{
     cursor: not-allowed;
-    background-color: rgba(240, 100, 73, 0.5);
+    background-color: rgb(255, 0, 0);
 }
