@@ -9,7 +9,8 @@ h1{
     display: grid; 
     width: auto;
     height: auto;
-    margin: 0 auto;
+    margin-right: 280px;
+    margin-left: 280px;
     justify-content: center;
     background-color: rgb(89, 145, 218);   
     grid-template-columns: repeat(7,auto);
