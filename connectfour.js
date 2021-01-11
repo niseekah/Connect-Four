@@ -35,10 +35,10 @@ function display_board()
       }
       else
       {
-       cells.classList.add('clicked');
+       cells.classList.add('player_one_piece');
       }
       // each row and column is returned
-        cells.innerHTML = fill;
+        //cells.innerHTML = fill;
     }
   }
 }
@@ -55,8 +55,9 @@ function players_turn(x, y)
   }
   else
   {
-
-    board[x][y] = 'R';
+    console.log("change color");
+    document.getElementById(`cell-${x}-${y}`).style.color = 'red'
+    console.log(document.getElementById(`cell-${x}-${y}`).style.color);
     display_board();
     const result = check_Board(board);
     if(result == 'continue')
@@ -109,7 +110,7 @@ function ai_turn()
       if(board[i][j] == ' ')
       {
 
-        board[i][j] = 'Y';
+        board[i][j] = document.getElementById(`cell-${i}-${j}`).style.color = 'yellow';
         display_board();
 
         const result = check_Board(board);
