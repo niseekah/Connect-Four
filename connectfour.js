@@ -135,3 +135,6 @@ function ai_turn()
 play_Board();
 record();
 
+
+
+
