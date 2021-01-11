@@ -12,6 +12,8 @@ let board = [
 let wins = 0;
 let losses = 0;
 let ties = 0;
+const playerOne = document.querySelectorAll('.player-one-piece')
+const playerTwo = document.querySelectorAll('.player-two-piece')
 
 // Create a Function that 
 function play_Board()
@@ -29,7 +31,7 @@ function play_Board()
       // If the vairable fill is a 0 then
       // remove the function called clicked
       // else add the function called clicked
-      if(fill == 0)
+      if(fill == '')
       {
         rows.classList.remove('clicked');
       }
@@ -54,7 +56,7 @@ function players_turn(x, y)
   }
   else
   {
-    board[x][y] = 'R';
+    board[x][y] = playerOne;
     play_Board();
     const result = check_Board(board);
     if(result == 'continue')
@@ -106,7 +108,7 @@ function ai_turn()
     {
       if(board[i][j] == ' ')
       {
-        board[x][y] = 'Y';
+        board[x][y] =  playerTwo;
         play_Board();
         const result = check_Board(board);
         if(result == 'continue')
