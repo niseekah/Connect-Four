@@ -31,16 +31,18 @@ function display_board()
       // else add the function called clicked
       if(fill == ' ')
       {
-        cells.classList.remove('clicked');
+        cells.classList.add('player-one-piece');
       }
       else
       {
-       cells.classList.add('clicked');
+        cells.classList.remove('player-one-piece');
       }
       // each row and column is returned
         //cells.innerHTML = fill;
+        return fill;    
     }
   }
+  console.log(board);
 }
 
 
@@ -55,9 +57,19 @@ function players_turn(x, y)
   }
   else
   {
+      // Grab the column of the board[y] and use a for loop the check if each 
+      // circle doesn't have a 'R' or 'Y' in it.
+    for(let i = 5; i >= 0; i--)
+    {
+        if(board[i][y] == ' ')
+        {
+            cells = 'R';
+            break;
+        }
+    }
     
-    document.getElementById(`cell-${i}-${j}`);
-    
+    let position = document.getElementById(`cell-${x}-${y}`);
+    // cells = 'R';
     display_board();
     const result = check_Board(board);
     if(result == 'continue')
@@ -103,14 +115,22 @@ function reset()
 
 function ai_turn()
 {
-  for(let i = 0; i < 6; i++)
-  {
-    for(let j = 0; j < 7; j++)
-    {
-      if(board[i][j] == ' ')
-      {
+  // randomly pick a column and then loop thru the column and mark it 'Y'
+  let i = Math.floor(Math.random() * 7);
+  console.log(i); 
+  let j = Math.floor(Math.random() * 8)
 
-        board[i][j] = document.getElementById(`cell-${i}-${j}`).style.color = 'yellow';
+    if(board[i][j] == ' ')
+    {
+        for(let x = 5; x >= 0; x--)
+        {   
+            if(board[x][j] == ' ')
+            {
+                cells = 'Y';
+                break;
+            }
+        }
+
         display_board();
 
         const result = check_Board(board);
@@ -131,9 +151,8 @@ function ai_turn()
   
         stats();
         return;
-      }
     }
-  }
+    
 }
 
 display_board();
