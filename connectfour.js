@@ -35,7 +35,7 @@ function display_board()
       }
       else
       {
-       cells.classList.add('player_one_piece');
+       cells.classList.add('clicked');
       }
       // each row and column is returned
         //cells.innerHTML = fill;
@@ -55,9 +55,9 @@ function players_turn(x, y)
   }
   else
   {
-    console.log("change color");
-    document.getElementById(`cell-${x}-${y}`).style.color = 'red'
-    console.log(document.getElementById(`cell-${x}-${y}`).style.color);
+    
+    document.getElementById(`cell-${i}-${j}`);
+    
     display_board();
     const result = check_Board(board);
     if(result == 'continue')
@@ -136,7 +136,8 @@ function ai_turn()
   }
 }
 
-
 display_board();
 stats();
 }
+
+ 
